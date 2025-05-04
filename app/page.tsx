@@ -10,6 +10,7 @@ import FeaturedWork from "@/components/featured-work"
 import StatsSection from "@/components/stats-section"
 import Footer from "@/components/footer"
 import FAQSection from "@/components/faq-section"
+import ServiceCards from "@/components/service-cards"
 
 export default function Home() {
   return (
@@ -17,10 +18,12 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <StatsSection />
+    
       <AboutSection />
       <FilmsSection />
       <PhotoGallery />
       <FeaturedWork />
+      {/* <ServiceCards /> */}
       <TestimonialsSlider />
       <FAQSection />
       <Footer />
