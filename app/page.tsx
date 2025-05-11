@@ -11,18 +11,20 @@ import StatsSection from "@/components/stats-section"
 import Footer from "@/components/footer"
 import FAQSection from "@/components/faq-section"
 import ServiceCards from "@/components/service-cards"
+import WeddingStories from "@/components/wedding-stories"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <StatsSection />
-    
+
       <AboutSection />
       <FilmsSection />
+      <StatsSection />
       <PhotoGallery />
       <FeaturedWork />
+      <WeddingStories />
       {/* <ServiceCards /> */}
       <TestimonialsSlider />
       <FAQSection />
