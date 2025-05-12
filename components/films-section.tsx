@@ -12,175 +12,200 @@ import work4 from '../src/work4.jpg'
 import work5 from '../src/work5.jpg'
 import work6 from '../src/work6.jpg'
 
-const films = [
+interface Film {
+  id: string;
+  title: string;
+  thumbnail: string;
+  videoId: string;
+  category: string;
+  date: string;
+}
+
+const films: Film[] = [
   {
-    id: 1,
-    title: "Dhruv & Pippa",
-    image: work1,
+    id: 'film-1',
+    title: 'Riya & Aditya',
+    thumbnail: '/images/films/1.jpg',
+    videoId: 'FSgpdIf_ebc',
+    category: 'Wedding Film',
+    date: 'March 2024'
   },
   {
-    id: 2,
-    title: "AVI VAI",
-    image:work2,
+    id: 'film-2',
+    title: 'Meera & Karan',
+    thumbnail: '/images/films/2.jpg',
+    videoId: 'FSgpdIf_ebc',
+    category: 'Pre-Wedding',
+    date: 'February 2024'
   },
   {
-    id: 3,
-    title: "Deewangi",
-    image:work3,
+    id: 'film-3',
+    title: 'Zara & Kabir',
+    thumbnail: '/images/films/3.jpg',
+    videoId: 'FSgpdIf_ebc',
+    category: 'Wedding Film',
+    date: 'January 2024'
   },
   {
-    id: 4,
-    title: "Viggothagged",
-    image: work4,
-  },
-  {
-    id: 5,
-    title: "Rishi & Meera",
-    image: work5,
-  },
-  {
-    id: 5,
-    title: "Rishi & Meera",
-    image: work6,
-  },
+    id: 'film-4',
+    title: 'Anita & Raj',
+    thumbnail: '/images/films/4.jpg',
+    videoId: 'FSgpdIf_ebc',
+    category: 'Engagement',
+    date: 'December 2023'
+  }
 ]
 
 // Create an extended array for infinite scroll effect
 const extendedFilms = [...films, ...films, ...films]
 
 export default function FilmsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const controls = useAnimation()
+  const [selectedFilm, setSelectedFilm] = useState<string | null>(null)
   const [isHovered, setIsHovered] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const controls = useAnimation()
 
   useEffect(() => {
-    const startAutoScroll = async () => {
-      while (!isHovered) {
+    let intervalId: NodeJS.Timeout | undefined
+
+    if (isHovered) {
+      controls.stop()
+    } else {
+      const animate = async () => {
         await controls.start({
-          x: [`0%`, `-${100 / 3}%`], // Only scroll through one set of films
+          x: [0, -1000],
           transition: {
-            duration: 15, // Increased duration for slower scroll
-            ease: "linear",
-            repeat: Number.POSITIVE_INFINITY,
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 20,
+              ease: "linear",
+            },
           },
         })
       }
+      animate()
     }
 
-    if (!isHovered) {
-      startAutoScroll()
-    } else {
-      controls.stop()
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId)
+      }
     }
   }, [isHovered, controls])
 
-  const nextSlide = () => {
-    if (currentIndex < films.length - 1) {
-      setCurrentIndex(currentIndex + 1)
-    } else {
-      setCurrentIndex(0)
-    }
-  }
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    } else {
-      setCurrentIndex(films.length - 1)
-    }
-  }
+  const VideoModal = ({ videoId }: { videoId: string }) => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+      onClick={() => setSelectedFilm(null)}
+    >
+      <div className="relative w-full max-w-6xl aspect-video">
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            setSelectedFilm(null)
+          }}
+          className="absolute -top-10 right-0 text-white text-xl p-2"
+        >
+          ✕
+        </button>
+        <iframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </motion.div>
+  )
 
   return (
-    <section className="py-16 bg-[#b9a58f] relative overflow-hidden">
+    <div className="py-16 bg-[#F5F0EC]">
       <div className="container mx-auto px-4">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <h2 className="text-4xl font-playfair text-center mb-16">Recent Films</h2>
+
+        {/* Scrolling Films Section */}
+        <div
+          ref={containerRef}
+          className="relative overflow-hidden mb-20"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          <h2 className="text-4xl md:text-6xl font-serif text-[#3c3c3c] mb-2">Beautiful Weddings,</h2>
-          <h3 className="text-3xl md:text-5xl font-serif italic text-[#3c3c3c] border-b border-[#3c3c3c]/30 inline-block pb-2">
-            Breathtaking Films
-          </h3>
-        </motion.div>
-
-        <div className="relative">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/20 p-3 rounded-full text-white backdrop-blur-sm"
-            aria-label="Previous slide"
+          <motion.div
+            className="flex gap-6"
+            animate={controls}
+            drag="x"
+            dragConstraints={containerRef}
           >
-            <ChevronLeft className="h-6 w-6" />
-          </motion.button>
-
-          <div
-            className="overflow-hidden"
-            ref={carouselRef}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <motion.div
-              className="flex"
-              animate={controls}
-              drag="x"
-              dragConstraints={carouselRef}
-              style={{ cursor: isHovered ? "grab" : "auto" }}
-            >
-              {extendedFilms.map((film, index) => (
-                <motion.div
-                  key={`${film.id}-${index}`}
-                  className="w-[85vw] sm:w-[60vw] md:w-[40vw] lg:w-[25vw] h-[70vh] flex-shrink-0 px-2"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="relative group h-full overflow-hidden rounded-md">
-                    <div className="absolute top-4 left-4 bg-black/10 px-3 py-1 rounded-full text-[#3c3c3c] text-xs z-10 backdrop-blur-sm font-light">
-                      A Nexus Film
+            {[...films, ...films].map((film, index) => (
+              <motion.div
+                key={`${film.id}-${index}`}
+                className="relative min-w-[300px] md:min-w-[400px] aspect-video rounded-lg overflow-hidden shadow-lg cursor-pointer group"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setSelectedFilm(film.videoId)}
+              >
+                <Image
+                  src={film.thumbnail}
+                  alt={film.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300">
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
                     </div>
-                    <Image
-                      src={film.image || "/placeholder.svg?height=800&width=600"}
-                      alt={film.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-
-                    {/* Title overlay for all states */}
-                    <div className="absolute inset-0 flex flex-col justify-end items-center pb-16 px-4">
-                      <h3 className="text-3xl md:text-4xl font-serif text-white drop-shadow-md mb-6 text-center">
-                        {film.title}
-                      </h3>
-                      <Button
-                        variant="outline"
-                        className="border border-white text-white hover:bg-white hover:text-black rounded-full px-6 py-1 text-sm transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0"
-                      >
-                        Watch Film
-                      </Button>
-                    </div>
-
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                </div>
+                <div className="absolute bottom-0 left-0 p-6 text-white">
+                  <h3 className="text-xl font-playfair mb-2">{film.title}</h3>
+                  <p className="text-sm opacity-80">{film.category} • {film.date}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/20 p-3 rounded-full text-white backdrop-blur-sm"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </motion.button>
+        {/* Most Popular Section */}
+        <div>
+          <h3 className="text-3xl font-playfair text-center mb-12">Most Popular</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {films.slice(0, 3).map((film) => (
+              <motion.div
+                key={film.id}
+                className="relative aspect-video rounded-lg overflow-hidden shadow-lg cursor-pointer group"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setSelectedFilm(film.videoId)}
+              >
+                <Image
+                  src={film.thumbnail}
+                  alt={film.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300">
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-6 border-t-transparent border-l-8 border-l-white border-b-6 border-b-transparent ml-1"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 p-4 text-white">
+                  <h3 className="text-lg font-playfair mb-1">{film.title}</h3>
+                  <p className="text-sm opacity-80">{film.category}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+
+      {/* Video Modal */}
+      {selectedFilm && <VideoModal videoId={selectedFilm} />}
+    </div>
   )
 }

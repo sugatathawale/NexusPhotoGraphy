@@ -1,145 +1,143 @@
 "use client"
 
-import { useRef } from "react"
-import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { useState } from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 import work1 from '../src/work1.jpg'
 import work2 from '../src/work2.jpg'
 import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
 import work5 from '../src/work5.jpg'
-import work6 from '../src/work6.jpg'
-import work7 from '../src/work7.jpg'
-import work8 from '../src/work6.jpg'
-import work9 from '../src/work6.jpg'
-import work10 from '../src/work6.jpg'
 
-const featuredProjects = [
+interface Project {
+  id: string
+  title: string
+  description: string
+  image: any
+  category: string
+}
+
+const featuredProjects: Project[] = [
   {
-    id: 1,
-    title: "Royal Rajasthan Wedding",
-    description: "A magnificent celebration in the palaces of Udaipur",
+    id: 'project-1',
+    title: 'Sarah & John',
+    description: 'A beautiful wedding in Mumbai',
     image: work1,
-    category: "Destination Wedding",
+    category: 'Wedding'
   },
   {
-    id: 2,
-    title: "Beach Romance in Goa",
-    description: "Sunset vows by the Arabian Sea",
+    id: 'project-2',
+    title: 'Priya & Rahul',
+    description: 'Pre-wedding shoot in Delhi',
     image: work2,
-    category: "Beach Wedding",
+    category: 'Pre-Wedding'
   },
   {
-    id: 3,
-    title: "Traditional South Indian Ceremony",
-    description: "A colorful celebration of heritage and culture",
-    image:work3,
-    category: "Traditional Wedding",
+    id: 'project-3',
+    title: 'Maya & Arjun',
+    description: 'Engagement ceremony in Goa',
+    image: work3,
+    category: 'Engagement'
   },
   {
-    id: 4,
-    title: "Modern Mumbai Celebration",
-    description: "Contemporary elegance in the heart of the city",
+    id: 'project-4',
+    title: 'Zara & Kabir',
+    description: 'Destination wedding in Udaipur',
     image: work4,
-    category: "Urban Wedding",
+    category: 'Wedding'
   },
   {
-    id: 5,
-    title: "Intimate Himalayan Elopement",
-    description: "Love amidst the majestic mountains",
+    id: 'project-5',
+    title: 'Anita & Raj',
+    description: 'Pre-wedding shoot in Jaipur',
     image: work5,
-    category: "Intimate Wedding",
-  },
-  {
-    id: 5,
-    title: "Intimate Himalayan Elopement",
-    description: "Love amidst the majestic mountains",
-    image: work6,
-    category: "Intimate Wedding",
-  },
+    category: 'Pre-Wedding'
+  }
 ]
 
 export default function FeaturedWork() {
-  const containerRef = useRef(null)
-  const { scrollXProgress } = useScroll({
-    container: containerRef,
-  })
-
-  const opacity = useTransform(scrollXProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
-    <section className="py-20 bg-golden-100">
+    <section className="py-16 bg-[#F5F0EC]">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <h2 className="text-5xl md:text-6xl font-serif text-gray-800 mb-4 drop-shadow-golden">
-              Featured Work
-            </h2>
-            <p className="text-gray-600 max-w-2xl text-lg">
-              Explore some of our most memorable wedding stories from around the world.
-            </p>
-          </div>
-          <div className="hidden md:flex items-center text-gray-800 gap-3 group cursor-pointer">
-            <span className="text-lg font-medium">Scroll to explore</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-playfair mb-4">Featured Work</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Explore our collection of beautiful moments we've captured for couples just like you.
+          </p>
+        </motion.div>
 
-        <div className="relative">
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto hide-scrollbar gap-8 pb-12 snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {featuredProjects.map((project) => (
+        <div className="relative overflow-x-hidden">
+          <div className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide">
+            {featuredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={`${project.id}-${index}`}
                 className="min-w-[350px] md:min-w-[450px] h-[600px] relative rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 snap-center group"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
-                  rotateY: 2,
-                  transition: { duration: 0.4, ease: "easeOut" }
+                  transition: { duration: 0.3 }
                 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.6 }
-                }}
-                viewport={{ once: true }}
+                onClick={() => setSelectedProject(project)}
               >
-                <Image 
-                  src={project.image || "/placeholder.svg"} 
-                  alt={project.title} 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  priority={index < 2}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-                <motion.div 
-                  className="absolute bottom-0 left-0 p-8 text-white w-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <span className="text-golden-300 text-sm font-medium mb-3 block tracking-wider uppercase">{project.category}</span>
-                  <h3 className="text-3xl font-serif mb-3 group-hover:text-golden-200 transition-colors">{project.title}</h3>
-                  <p className="text-gray-200 text-lg leading-relaxed max-w-[90%]">{project.description}</p>
-                  <div className="mt-6 flex items-center gap-2 text-golden-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                    <span className="text-sm font-medium">View Project</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-8 text-white">
+                  <h3 className="text-2xl font-playfair mb-2">{project.title}</h3>
+                  <p className="text-sm opacity-80">{project.description}</p>
+                  <span className="inline-block mt-4 text-sm bg-white/20 px-3 py-1 rounded-full">
+                    {project.category}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            className="absolute right-0 top-0 bottom-12 w-32 bg-gradient-to-l from-golden-100 to-transparent pointer-events-none"
-            style={{ opacity }}
-          />
         </div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedProject(null)}
+        >
+          <motion.div
+            className="relative w-full max-w-5xl aspect-[3/2] rounded-lg overflow-hidden"
+            layoutId={`project-${selectedProject.id}`}
+          >
+            <Image
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              fill
+              className="object-contain"
+              priority
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedProject(null)
+              }}
+              className="absolute top-4 right-4 text-white text-xl bg-black/50 w-10 h-10 rounded-full flex items-center justify-center"
+            >
+              ✕
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   )
 }

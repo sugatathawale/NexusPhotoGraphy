@@ -74,7 +74,7 @@ function NavLinks({ mobile = false, onClick = () => {} }) {
     { name: "About", href: "/about" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "Contact", href: "/contact" },
-    { name: "FAQ", href: "/faq" },
+    // { name: "FAQ", href: "/faq" },
   ]
 
   return (

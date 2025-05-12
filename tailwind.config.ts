@@ -83,6 +83,7 @@ const config = {
       },
       fontFamily: {
         serif: ["Playfair Display", "serif"],
+        playfair: ['var(--font-playfair)'],
       },
       keyframes: {
         "accordion-down": {
