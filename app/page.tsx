@@ -18,7 +18,6 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <HeroSection />
-
       <AboutSection />
       <FilmsSection />
       <StatsSection />
@@ -28,7 +27,7 @@ export default function Home() {
       {/* <ServiceCards /> */}
       <TestimonialsSlider />
       <FAQSection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   )
 }

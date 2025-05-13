@@ -10,13 +10,8 @@ import work4 from '../src/work4.jpg'
 import work5 from '../src/work5.jpg'
 import work6 from '../src/work6.jpg'
 import work7 from '../src/work7.jpg'
-import work8 from '../src/work6.jpg'
-import work9 from '../src/work6.jpg'
-import work10 from '../src/work6.jpg'
-import work11 from '../src/work6.jpg'
-
 // Define photo types
-type PhotoLayout = 'portrait' | 'landscape' | 'square'
+type PhotoLayout = "portrait" | "landscape" | "square"
 
 interface Photo {
   id: string
@@ -26,92 +21,120 @@ interface Photo {
   alt: string
 }
 
-interface Project {
-  id: string
-  title: string
-  location: string
-  image: string
-  category: string
-}
-
-// Layout matches exactly with the diagram provided
+// Sample photo data - you can replace with your actual photos
 const photos: Photo[] = [
   {
-    id: 'photo-1',
-    src: '/images/gallery/1.jpg',
-    layout: 'landscape',
-    category: 'Wedding',
-    alt: 'Wedding photo 1'
+    id: "photo-1",
+    src: work5,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Wedding ceremony with flower decorations",
   },
   {
-    id: 'photo-2',
-    src: '/images/gallery/2.jpg',
-    layout: 'portrait',
-    category: 'Pre-Wedding',
-    alt: 'Pre-wedding photo 1'
+    id: "photo-2",
+    src:work1,
+    layout: "portrait",
+    category: "Pre-Wedding",
+    alt: "Couple laughing together in pre-wedding shoot",
   },
   {
-    id: 'photo-3',
-    src: '/images/gallery/3.jpg',
-    layout: 'square',
-    category: 'Engagement',
-    alt: 'Engagement photo 1'
+    id: "photo-3",
+    src:work2,
+    layout: "square",
+    category: "Engagement",
+    alt: "Engagement celebration with family",
   },
   {
-    id: 'photo-4',
-    src: '/images/gallery/4.jpg',
-    layout: 'landscape',
-    category: 'Wedding',
-    alt: 'Wedding photo 2'
+    id: "photo-4",
+    src:work3,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Beach wedding ceremony",
   },
   {
-    id: 'photo-5',
-    src: '/images/gallery/5.jpg',
-    layout: 'portrait',
-    category: 'Pre-Wedding',
-    alt: 'Pre-wedding photo 2'
+    id: "photo-5",
+    src: work5,
+    layout: "portrait",
+    category: "Pre-Wedding",
+    alt: "Couple at beach pre-wedding shoot",
   },
   {
-    id: 'photo-6',
-    src: '/images/gallery/6.jpg',
-    layout: 'square',
-    category: 'Engagement',
-    alt: 'Engagement photo 2'
+    id: "photo-6",
+    src: work6,
+    layout: "square",
+    category: "Engagement",
+    alt: "Traditional engagement ceremony",
   },
   {
-    id: 'photo-7',
-    src: '/images/gallery/7.jpg',
-    layout: 'landscape',
-    category: 'Wedding',
-    alt: 'Wedding photo 3'
+    id: "photo-7",
+    src:work7,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Wedding celebration with guests",
   },
   {
-    id: 'photo-8',
-    src: '/images/gallery/8.jpg',
-    layout: 'portrait',
-    category: 'Pre-Wedding',
-    alt: 'Pre-wedding photo 3'
+    id: "photo-8",
+    src: work3,
+    layout: "portrait",
+    category: "Pre-Wedding",
+    alt: "Urban pre-wedding photoshoot",
+  },
+  {
+    id: "photo-9",
+    src:work1,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Traditional wedding ceremony",
+  },
+  {
+    id: "photo-10",
+    src: work4,
+    layout: "portrait",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
+  },
+  {
+    id: "photo-11",
+    src: work6,
+    layout: "landscape",
+    category: "Pre-Wedding",
+    alt: "Couple in traditional attire",
+  },
+  {
+    id: "photo-12",
+    src:work1,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
+  },
+  {
+    id: "photo-13",
+    src:work1,
+    layout: "square",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
   },
 ]
 
-const featuredProjects: Project[] = [
-  { id: 'project-1', title: 'Sarah & John', location: 'Mumbai', image: '/images/featured/1.jpg', category: 'Wedding' },
-  { id: 'project-2', title: 'Priya & Rahul', location: 'Delhi', image: '/images/featured/2.jpg', category: 'Pre-Wedding' },
-  { id: 'project-3', title: 'Maya & Arjun', location: 'Goa', image: '/images/featured/3.jpg', category: 'Engagement' },
-  { id: 'project-4', title: 'Zara & Kabir', location: 'Udaipur', image: '/images/featured/4.jpg', category: 'Wedding' },
-  { id: 'project-5', title: 'Anita & Raj', location: 'Jaipur', image: '/images/featured/5.jpg', category: 'Pre-Wedding' },
-]
-
+// Categories for filtering
 const categories = ["All", "Wedding", "Pre-Wedding", "Engagement"]
+
+// Photo types for filtering
+const photoTypes = ["All Types", "Portrait", "Landscape", "Square"]
 
 export default function PhotoGallery() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedType, setSelectedType] = useState("All Types")
 
-  const filteredPhotos = selectedCategory === "All"
-    ? photos
-    : photos.filter(photo => photo.category === selectedCategory)
+  // Filter photos based on selected category and type
+  const filteredPhotos = photos.filter((photo) => {
+    const categoryMatch = selectedCategory === "All" || photo.category === selectedCategory
+    const typeMatch = selectedType === "All Types" || photo.layout === selectedType.toLowerCase()
+    return categoryMatch && typeMatch
+  })
 
+  // Get appropriate CSS class based on photo layout
   const getImageClass = (layout: PhotoLayout) => {
     switch (layout) {
       case "portrait":
@@ -127,96 +150,101 @@ export default function PhotoGallery() {
 
   return (
     <div className="py-16 bg-[#F5F0EC]">
-      {/* Featured Projects Section */}
-      <div className="container mx-auto px-4 mb-16">
-        <h2 className="text-4xl font-playfair text-center mb-12">Featured Projects</h2>
-        <div className="relative overflow-x-hidden">
-          <div className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide">
-            {featuredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                className="min-w-[350px] md:min-w-[450px] h-[600px] relative rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 snap-center group"
-                whileHover={{
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-playfair mb-2">{project.title}</h3>
-                  <p className="text-sm opacity-80">{project.location}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Filter Section */}
+      <div className="container mx-auto px-4 mb-12">
+        <h2 className="text-4xl font-serif text-center mb-4">Our Photography</h2>
 
-      {/* Gallery Section */}
-      <div className="container mx-auto px-4">
-        <div className="flex justify-center space-x-4 mb-8">
-          {categories.map((category) => (
+        {/* Photo Type Filters */}
+        <div className="flex flex-wrap justify-center gap-4">
+          {photoTypes.map((type) => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full transition-colors ${selectedCategory === category
-                ? 'bg-[#36302a] text-white'
-                : 'bg-white text-[#36302a] hover:bg-[#36302a] hover:text-white'
-                }`}
+              key={type}
+              onClick={() => setSelectedType(type)}
+              className={`px-6 py-2 rounded-full transition-colors ${
+                selectedType === type
+                  ? "bg-[#36302a] text-white"
+                  : "bg-white text-[#36302a] hover:bg-[#36302a] hover:text-white"
+              }`}
             >
-              {category}
+              {type}
             </button>
           ))}
         </div>
+      </div>
 
-        <div className="grid grid-cols-4 auto-rows-[250px] gap-4">
+      {/* Gallery Grid */}
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] gap-4">
           {filteredPhotos.map((photo) => (
             <motion.div
               key={photo.id}
               layoutId={`photo-${photo.id}`}
-              className={`relative overflow-hidden ${getImageClass(photo.layout)}`}
+              className={`relative overflow-hidden rounded-lg ${getImageClass(photo.layout)}`}
               onClick={() => setSelectedPhoto(photo)}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <Image
-                src={photo.src}
+                src={photo.src || "/placeholder.svg"}
                 alt={photo.alt}
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-110"
               />
+              <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 p-4 text-white">
+                  <p className="text-sm font-medium">{photo.category}</p>
+                  <p className="text-xs opacity-80">{photo.layout}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Modal */}
-      {selectedPhoto && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedPhoto(null)}
-        >
+      {/* Modal for enlarged view */}
+      <AnimatePresence>
+        {selectedPhoto && (
           <motion.div
-            layoutId={`photo-${selectedPhoto.id}`}
-            className="relative w-full max-w-5xl aspect-[3/2]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedPhoto(null)}
           >
-            <Image
-              src={selectedPhoto.src}
-              alt={selectedPhoto.alt}
-              fill
-              className="object-contain"
-            />
+            <motion.div
+              layoutId={`photo-${selectedPhoto.id}`}
+              className="relative w-full max-w-5xl max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedPhoto.src || "/placeholder.svg"}
+                alt={selectedPhoto.alt}
+                fill
+                className="object-contain"
+              />
+              <button
+                className="absolute top-4 right-4 bg-white/20 text-white p-2 rounded-full hover:bg-white/40 transition-colors"
+                onClick={() => setSelectedPhoto(null)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   )
 }
