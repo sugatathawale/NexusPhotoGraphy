@@ -51,6 +51,8 @@ export default function About() {
                             alt="Team group photo"
                             fill
                             className="object-cover grayscale"
+                            unoptimized
+                            priority
                         />
                     </div>
                     <div className="relative aspect-[4/3]">
@@ -59,6 +61,8 @@ export default function About() {
                             alt="Team group photo"
                             fill
                             className="object-cover grayscale"
+                            unoptimized
+                            priority
                         />
                     </div>
                 </div>
