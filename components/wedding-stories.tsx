@@ -42,7 +42,7 @@ const weddingStories: WeddingStory[] = [
 
 export default function WeddingStories() {
     return (
-        <section className="py-20 bg-[#FAF6F1] overflow-hidden">
+        <section className="py-20 bg-[#b9a58f] overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-5xl md:text-6xl font-serif mb-4 bg-gradient-to-r from-neutral-800 to-neutral-600 bg-clip-text text-transparent">
