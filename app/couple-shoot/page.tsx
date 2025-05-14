@@ -1,36 +1,42 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
+import work1 from '../../src/work1.jpg'
+import work2 from '../../src/work2.jpg'
+import work3 from '../../src/work3.jpg'
+import work4 from '../../src/work4.jpg'
+import work5 from '../../src/work5.jpg'
+import work6 from '../../src/work6.jpg'
+import work7 from '../src/work7.jpg'
 export default function CoupleShoot() {
     const galleryImages = [
         {
             id: 1,
-            src: '/images/couple-1.jpg',
+            src: work6,
             title: 'Beach Sunset Love',
             location: 'Juhu Beach, Mumbai'
         },
         {
             id: 2,
-            src: '/images/couple-2.jpg',
+            src: work1,
             title: 'Urban Romance',
             location: 'South Mumbai'
         },
         {
             id: 3,
-            src: '/images/couple-3.jpg',
+            src: work2,
             title: 'Garden of Love',
             location: 'Hanging Gardens'
         },
         {
             id: 4,
-            src: '/images/couple-4.jpg',
+            src: work4,
             title: 'Monsoon Magic',
             location: 'Marine Drive'
         },
         {
             id: 5,
-            src: '/images/couple-5.jpg',
+            src:work5,
             title: 'Architectural Romance',
             location: 'Gateway of India'
         },

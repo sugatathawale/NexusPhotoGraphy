@@ -3,6 +3,13 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+import work1 from '../../src/work1.jpg'
+import work2 from '../../src/work2.jpg'
+import work3 from '../../src/work3.jpg'
+import work4 from '../../src/work4.jpg'
+import work5 from '../../src/work5.jpg'
+import work6 from '../../src/work6.jpg'
+
 export default function Contact() {
     return (
         <div className="min-h-screen bg-[#F5F0EC] pt-32">
@@ -17,7 +24,7 @@ export default function Contact() {
                             className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
                         >
                             <Image
-                                src="/images/contact/couple1.jpg"
+                                src={work1}
                                 alt="Happy couple laughing"
                                 fill
                                 className="object-cover"
@@ -31,7 +38,7 @@ export default function Contact() {
                             className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
                         >
                             <Image
-                                src="/images/contact/couple2.jpg"
+                                src={work2}
                                 alt="Wedding couple"
                                 fill
                                 className="object-cover"

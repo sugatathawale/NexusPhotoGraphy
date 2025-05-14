@@ -122,33 +122,7 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-black text-white py-16">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div>
-                            <h4 className="font-playfair text-2xl mb-6">Contact</h4>
-                            <p className="mb-2">+91 9820670989</p>
-                            <p>knotsbyamp@gmail.com</p>
-                        </div>
-                        <div>
-                            <h4 className="font-playfair text-2xl mb-6">Follow Us</h4>
-                            <div className="flex gap-4">
-                                <a href="#" className="hover:text-gray-300">Instagram</a>
-                                <a href="#" className="hover:text-gray-300">Facebook</a>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 className="font-playfair text-2xl mb-6">Address</h4>
-                            <p>Mumbai, Maharashtra</p>
-                            <p>India</p>
-                        </div>
-                    </div>
-                    <div className="mt-12 text-center text-sm text-gray-400">
-                        © 2024 KnotsbyAMP. All rights reserved.
-                    </div>
-                </div>
-            </footer>
+
         </div>
     );
 } 
