@@ -9,7 +9,8 @@ import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
 import work5 from '../src/work5.jpg'
 import work6 from '../src/work6.jpg'
-import work7 from '../src/work7.jpg'
+import work9 from '../src/work9.jpg'
+
 // Define photo types
 type PhotoLayout = "portrait" | "landscape" | "square"
 
@@ -67,7 +68,7 @@ const photos: Photo[] = [
   },
   {
     id: "photo-7",
-    src:work7,
+    src:work9,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding celebration with guests",

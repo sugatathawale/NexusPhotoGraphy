@@ -1,44 +1,46 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import logo from '../src/logo.jpg'
+import logo from "../src/logo.jpg"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowNavbar(false)
+      } else {
+        setShowNavbar(true)
+      }
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-transparent">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center">
-            <div className="relative w-24 h-24">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white font-serif text-xl">
-                <Image
-              src={logo}
-              alt="Logo"
-              width={52}
-              
-              height={52}
-              className="rounded-full"
-            />
-                  <span className="inline-block">
-        
+    <nav
+className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
+  showNavbar ? "translate-y-0" : "-translate-y-full"
+} bg-gradient-to-b from-[#938372]/90 to-transparent backdrop-blur-xs `}
 
-                    <span className="text-2xl">N</span>exus
-                  </span>
-                  {/* <span className="inline-block mx-1">by</span>
-                  <span className="inline-block"> */}
-                    {/* <span className="text-2xl">AMP</span> */}
-                  {/* </span> */}
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
+    >
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <Image src={logo} alt="Logo" width={48} height={48} className="rounded-full" />
+          <span className="text-white font-serif text-xl">
+            <span className="text-2xl">N</span>exus
+          </span>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -47,7 +49,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white focus:outline-none">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -55,7 +57,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-sm">
+        <div className="md:hidden bg-gradient-to-b from-[#c9b17e]/90 to-[#1e1b16]/90 backdrop-blur-md">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <NavLinks mobile onClick={() => setIsMenuOpen(false)} />
           </div>
@@ -83,10 +85,10 @@ function NavLinks({ mobile = false, onClick = () => {} }) {
         <Link
           key={link.name}
           href={link.href}
-          className={`text-white drop-shadow-golden hover:text-golden-300 transition-colors ${
+          onClick={onClick}
+          className={`text-white hover:text-yellow-300 transition-colors ${
             mobile ? "text-lg py-2" : "text-sm font-light"
           }`}
-          onClick={onClick}
         >
           {link.name}
         </Link>

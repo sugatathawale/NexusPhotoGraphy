@@ -22,7 +22,7 @@ export default function Home() {
       <FilmsSection />
       <StatsSection />
       <PhotoGallery />
-      <FeaturedWork />
+      {/* <FeaturedWork /> */}
       <WeddingStories />
       {/* <ServiceCards /> */}
       <TestimonialsSlider />

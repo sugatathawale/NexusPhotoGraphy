@@ -7,7 +7,7 @@ import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
 import work5 from '../src/work5.jpg'
 import work6 from '../src/work6.jpg'
-import work7 from '../src/work7.jpg'
+
 interface WeddingStory {
     title: string;
     description: string;
