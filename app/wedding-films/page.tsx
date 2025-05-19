@@ -6,7 +6,7 @@ import work1 from "../../src/work1.jpg"
 import work2 from "../../src/work2.jpg"
 import work3 from "../../src/work3.jpg"
 import work4 from "../../src/work4.jpg"
-import work5 from "../../src/work5.jpg"
+
 
 export default function WeddingFilms() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
@@ -35,7 +35,7 @@ export default function WeddingFilms() {
     },
     {
       id: 5,
-      thumbnail: work5,
+      thumbnail: work2,
       videoId: "FSgpdIf_ebc",
     },
     {
@@ -73,7 +73,7 @@ export default function WeddingFilms() {
     {
       id: 5,
       title: "Doctors in Love",
-      thumbnail: work5,
+      thumbnail: work2,
       videoId: "FSgpdIf_ebc",
     },
   ]

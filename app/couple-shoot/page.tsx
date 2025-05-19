@@ -5,14 +5,13 @@ import work1 from '../../src/work1.jpg'
 import work2 from '../../src/work2.jpg'
 import work3 from '../../src/work3.jpg'
 import work4 from '../../src/work4.jpg'
-import work5 from '../../src/work5.jpg'
-import work6 from '../../src/work6.jpg'
+
 
 export default function CoupleShoot() {
     const galleryImages = [
         {
             id: 1,
-            src: work6,
+            src: work1,
             title: 'Beach Sunset Love',
             location: 'Juhu Beach, Mumbai'
         },
@@ -36,7 +35,7 @@ export default function CoupleShoot() {
         },
         {
             id: 5,
-            src:work5,
+            src:work1,
             title: 'Architectural Romance',
             location: 'Gateway of India'
         },

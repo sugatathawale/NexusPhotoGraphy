@@ -5,7 +5,7 @@ import work1 from '../src/work1.jpg'
 import work2 from '../src/work2.jpg'
 import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
-import work5 from '../src/work5.jpg'
+
 import work6 from '../src/work6.jpg'
 
 interface WeddingStory {

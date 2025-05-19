@@ -7,7 +7,6 @@ import work1 from '../src/work1.jpg'
 import work2 from '../src/work2.jpg'
 import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
-import work5 from '../src/work5.jpg'
 import work6 from '../src/work6.jpg'
 import work9 from '../src/work9.jpg'
 
@@ -26,7 +25,7 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: "photo-1",
-    src: work5,
+    src: work9,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding ceremony with flower decorations",
@@ -54,7 +53,7 @@ const photos: Photo[] = [
   },
   {
     id: "photo-5",
-    src: work5,
+    src: work9,
     layout: "portrait",
     category: "Pre-Wedding",
     alt: "Couple at beach pre-wedding shoot",
