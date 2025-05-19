@@ -134,7 +134,7 @@ export default function WeddingFilms() {
               ref={scrollRef}
             >
               {recentFilms.map((film) => (
-                <div key={film.id} className="flex-none w-72 md:w-96">
+                <div key={film.id} className="flex-none w-56 md:w-72">
                   <div
                     className="relative aspect-[3/4] mb-4 group cursor-pointer"
                     onClick={() => setActiveVideo(film.videoId)}
@@ -145,11 +145,6 @@ export default function WeddingFilms() {
                       fill
                       className="object-cover rounded-xl"
                     />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
-                        <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
-                      </div>
-                    </div>
                   </div>
                   <h3 className="font-serif text-xl text-center">{film.title}</h3>
                   <div className="text-center mt-4">
@@ -197,8 +192,8 @@ export default function WeddingFilms() {
                   className="object-cover rounded-xl"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
-                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                  <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all duration-300">
+                    <div className="w-0 h-0 border-t-10 border-t-transparent border-l-16 border-l-white border-b-10 border-b-transparent ml-1"></div>
                   </div>
                 </div>
               </div>
