@@ -144,8 +144,8 @@ export default function FilmsSection() {
     <div className={styles.container}>
       <div className="container mx-auto px-4">
         {/* Header Section */}
-        <h1 className={styles.heading}>Beautiful Weddings,</h1>
-        <h2 className={styles.subheading}>Breathtaking Films</h2>
+        <h1 className={styles.heading}>Beautiful Couple </h1>
+        <h2 className={styles.subheading}>Breathtaking Shoot</h2>
 
         {/* Horizontal Scrolling Films Section */}
         <div className={styles.carouselContainer}>

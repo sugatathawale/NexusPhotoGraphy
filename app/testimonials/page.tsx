@@ -146,7 +146,7 @@ export default function Testimonials() {
             </section>
 
             {/* Video Testimonials */}
-            <section className="py-20 px-4">
+            {/* <section className="py-20 px-4">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="font-playfair text-4xl text-center mb-16">Video Stories</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -178,7 +178,7 @@ export default function Testimonials() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Written Reviews */}
             <section className="py-20 px-4 bg-[#D3C4B5]">

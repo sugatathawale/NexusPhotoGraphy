@@ -84,11 +84,11 @@ export default function WeddingStories() {
     if (isTransitioning) return
     setIsTransitioning(true)
     setActiveIndex((prev) => (prev + 1) % weddingStories.length)
-    setTimeout(() => setIsTransitioning(false), 700)
+    setTimeout(() => setIsTransitioning(false), 500)
   }, [isTransitioning])
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000)
+    const timer = setInterval(nextSlide, 3000)
     return () => clearInterval(timer)
   }, [nextSlide])
 
@@ -121,7 +121,7 @@ export default function WeddingStories() {
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#E75480] font-light tracking-wide">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#36302a] font-light tracking-wide">
             Nexus PhotoGraphy
           </h2>
         </div>
