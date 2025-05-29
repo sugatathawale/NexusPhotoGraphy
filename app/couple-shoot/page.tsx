@@ -3,10 +3,13 @@ import Image from "next/image"
 import type React from "react"
 
 import { motion } from "framer-motion"
-import work1 from "../../src/work1.jpg"
-import work2 from "../../src/work2.jpg"
-import work3 from "../../src/work3.jpg"
-import work4 from "../../src/work4.jpg"
+import work1 from "../../public/images/work1.jpg"
+import work2 from"../../public/images/work2.jpg"
+import work3 from "../../public/images/work3.jpg"
+import work4 from "../../public/images/work4.jpg"
+import work6 from "../../public/images/work6.jpg"
+import work9 from "../../public/images/work9.jpg"
+
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useRef } from "react"
 

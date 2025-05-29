@@ -36,7 +36,7 @@ className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <Image src={logo} alt="Logo" width={48} height={48} className="rounded-full" />
+          <Image src="/images/logo.jpg"  alt="Logo" width={48} height={48} className="rounded-full" />
           <span className="text-white font-serif text-xl">
             <span className="text-2xl">N</span>exus
           </span>

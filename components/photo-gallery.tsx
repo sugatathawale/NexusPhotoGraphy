@@ -3,12 +3,12 @@
 import { useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import work1 from '../src/work1.jpg'
-import work2 from '../src/work2.jpg'
-import work3 from '../src/work3.jpg'
-import work4 from '../src/work4.jpg'
-import work6 from '../src/work6.jpg'
-import work9 from '../src/work9.jpg'
+import work1 from "../public/images/work1.jpg"
+import work2 from"../public/images/work2.jpg"
+import work3 from "../public/images/work3.jpg"
+import work4 from "../public/images/work4.jpg"
+import work6 from "../public/images/work6.jpg"
+import work9 from "../public/images/work9.jpg"
 import type { StaticImageData } from 'next/image'
 
 // Define photo types
