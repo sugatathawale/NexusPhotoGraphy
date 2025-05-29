@@ -9,13 +9,14 @@ import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
 import work6 from '../src/work6.jpg'
 import work9 from '../src/work9.jpg'
+import type { StaticImageData } from 'next/image'
 
 // Define photo types
 type PhotoLayout = "portrait" | "landscape" | "square"
 
 interface Photo {
   id: string
-  src: string
+  src: string | StaticImageData
   layout: PhotoLayout
   category: string
   alt: string
@@ -32,21 +33,21 @@ const photos: Photo[] = [
   },
   {
     id: "photo-2",
-    src:work1,
+    src: work1,
     layout: "portrait",
     category: "Pre-Wedding",
     alt: "Couple laughing together in pre-wedding shoot",
   },
   {
     id: "photo-3",
-    src:work2,
+    src: work2,
     layout: "square",
     category: "Engagement",
     alt: "Engagement celebration with family",
   },
   {
     id: "photo-4",
-    src:work3,
+    src: work3,
     layout: "landscape",
     category: "Wedding",
     alt: "Beach wedding ceremony",
@@ -67,7 +68,7 @@ const photos: Photo[] = [
   },
   {
     id: "photo-7",
-    src:work9,
+    src: work9,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding celebration with guests",
@@ -81,7 +82,7 @@ const photos: Photo[] = [
   },
   {
     id: "photo-9",
-    src:work1,
+    src: work1,
     layout: "landscape",
     category: "Wedding",
     alt: "Traditional wedding ceremony",
@@ -102,14 +103,14 @@ const photos: Photo[] = [
   },
   {
     id: "photo-12",
-    src:work1,
+    src: work1,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding venue decoration",
   },
   {
     id: "photo-13",
-    src:work1,
+    src: work1,
     layout: "square",
     category: "Wedding",
     alt: "Wedding venue decoration",
@@ -160,11 +161,10 @@ export default function PhotoGallery() {
             <button
               key={type}
               onClick={() => setSelectedType(type)}
-              className={`px-6 py-2 rounded-full transition-colors ${
-                selectedType === type
-                  ? "bg-[#36302a] text-white"
-                  : "bg-white text-[#36302a] hover:bg-[#36302a] hover:text-white"
-              }`}
+              className={`px-6 py-2 rounded-full transition-colors ${selectedType === type
+                ? "bg-[#36302a] text-white"
+                : "bg-white text-[#36302a] hover:bg-[#36302a] hover:text-white"
+                }`}
             >
               {type}
             </button>
@@ -173,8 +173,8 @@ export default function PhotoGallery() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[250px] gap-4">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[140px] sm:auto-rows-[200px] md:auto-rows-[250px] gap-2 sm:gap-4">
           {filteredPhotos.map((photo) => (
             <motion.div
               key={photo.id}
@@ -189,11 +189,12 @@ export default function PhotoGallery() {
                 alt={photo.alt}
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-110"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 p-4 text-white">
-                  <p className="text-sm font-medium">{photo.category}</p>
-                  <p className="text-xs opacity-80">{photo.layout}</p>
+                <div className="absolute bottom-0 left-0 p-2 sm:p-4 text-white">
+                  <p className="text-xs sm:text-sm font-medium">{photo.category}</p>
+                  <p className="text-[10px] sm:text-xs opacity-80">{photo.layout}</p>
                 </div>
               </div>
             </motion.div>
@@ -208,12 +209,12 @@ export default function PhotoGallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 sm:p-4"
             onClick={() => setSelectedPhoto(null)}
           >
             <motion.div
               layoutId={`photo-${selectedPhoto.id}`}
-              className="relative w-full max-w-5xl max-h-[90vh]"
+              className="relative w-full max-w-2xl sm:max-w-5xl max-h-[80vh] sm:max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -221,9 +222,10 @@ export default function PhotoGallery() {
                 alt={selectedPhoto.alt}
                 fill
                 className="object-contain"
+                sizes="100vw"
               />
               <button
-                className="absolute top-4 right-4 bg-white/20 text-white p-2 rounded-full hover:bg-white/40 transition-colors"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/20 text-white p-2 rounded-full hover:bg-white/40 transition-colors"
                 onClick={() => setSelectedPhoto(null)}
               >
                 <svg

@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useState, useRef } from "react"
+import { FaPlay } from "react-icons/fa"
 
 import work1 from "../../src/work1.jpg"
 import work2 from "../../src/work2.jpg"
@@ -48,25 +49,23 @@ export default function WeddingFilms() {
   const recentFilms = [
     {
       id: 1,
-      title: "Dhruv & Pippa",
       thumbnail: work1,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 2,
-      title: "Tripped on Sun",
+
       thumbnail: work2,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 3,
-      title: "Juhi & Manav",
       thumbnail: work3,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 4,
-      title: "Lav yatri",
+
       thumbnail: work4,
       videoId: "FSgpdIf_ebc",
     },
@@ -145,14 +144,17 @@ export default function WeddingFilms() {
                       fill
                       className="object-cover rounded-xl"
                     />
+                    <div className="absolute inset-0 flex flex-col justify-between p-4">
+                      <span className="text-white text-sm md:text-base font-light drop-shadow-md mt-2">A KnotsbyAMP Film</span>
+                      <h3 className="text-white text-2xl md:text-3xl font-serif mb-4 drop-shadow-lg text-center w-full">{film.title}</h3>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-xl text-center">{film.title}</h3>
-                  <div className="text-center mt-4">
+                  <div className="flex justify-center mt-2">
                     <button
-                      className="bg-[#36302a] text-white px-6 py-2 rounded-full text-sm hover:bg-[#4a423a] transition-colors"
+                      className="bg-[#36302a] text-white px-6 py-2 rounded-full text-sm hover:bg-[#4a423a] transition-colors shadow-md"
                       onClick={() => setActiveVideo(film.videoId)}
                     >
-                      Watch Film
+                      watch film
                     </button>
                   </div>
                 </div>
@@ -193,7 +195,7 @@ export default function WeddingFilms() {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                   <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all duration-300">
-                    <div className="w-0 h-0 border-t-10 border-t-transparent border-l-16 border-l-white border-b-10 border-b-transparent ml-1"></div>
+                    <FaPlay className="text-white text-3xl md:text-4xl ml-1" />
                   </div>
                 </div>
               </div>

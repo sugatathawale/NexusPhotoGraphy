@@ -70,8 +70,8 @@ className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
 function NavLinks({ mobile = false, onClick = () => {} }) {
   const links = [
     { name: "Home", href: "/" },
-    { name: "Wedding Stories", href: "/wedding-stories" },
     { name: "Wedding Films", href: "/wedding-films" },
+    { name: "Wedding Stories", href: "/wedding-stories" },
     { name: "Couple Shoot", href: "/couple-shoot" },
     { name: "About", href: "/about" },
     { name: "Testimonials", href: "/testimonials" },

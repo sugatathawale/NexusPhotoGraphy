@@ -42,11 +42,11 @@ export default function FAQSection() {
   return (
     <section className="py-20 bg-cream-100">
       <div className="container mx-auto px-4 max-w-4xl">
-      <h2 className="text-4xl md:text-5xl font-serif text-center mb-4 text-black py-4 px-2 rounded-lg">
-      Confused? <span className="italic text-black">We've Got the Answers!</span>
-    </h2>
+        <h2 className="text-4xl md:text-5xl font-serif text-center mb-4 text-black py-4 px-2 rounded-lg">
+          Confused? <span className="italic text-black">We've Got the Answers!</span>
+        </h2>
 
-        
+
         <div className="mt-12 space-y-4">
           {faqData.map((faq, index) => (
             <div key={index} className="border-b border-gray-200">
@@ -65,7 +65,7 @@ export default function FAQSection() {
                   <Plus className="w-6 h-6 text-golden-500" />
                 </motion.div>
               </button>
-              
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
@@ -85,14 +85,7 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">
-            Have more questions? Head over to our FAQs page.
-          </p>
-          <button className="px-8 py-3 bg-cream-200 text-gray-800 rounded-full hover:bg-golden-100 transition-colors">
-            Know more
-          </button>
-        </div>
+     
       </div>
     </section>
   )

@@ -50,7 +50,6 @@ interface Film {
 const films: Film[] = [
   {
     id: "film-1",
-    title: "Dhruv & Pippa",
     thumbnail: work6,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
@@ -58,7 +57,6 @@ const films: Film[] = [
   },
   {
     id: "film-2",
-    title: "Avi & Vai",
     thumbnail: work4,
     videoId: "FSgpdIf_ebc",
     category: "Pre-Wedding",
@@ -66,7 +64,6 @@ const films: Film[] = [
   },
   {
     id: "film-3",
-    title: "Deewangi",
     thumbnail: work1,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
@@ -74,7 +71,6 @@ const films: Film[] = [
   },
   {
     id: "film-4",
-    title: "Viggothbagged",
     thumbnail: work2,
     videoId: "FSgpdIf_ebc",
     category: "Engagement",
@@ -181,7 +177,7 @@ export default function FilmsSection() {
                       <h3 className={styles.filmTitleText}>{film.title}</h3>
                     </div>
                     <div className={styles.filmButton}>
-                      <button className={styles.watchButton}>Watch Film</button>
+                      <button className={styles.watchButton}>See More</button>
                     </div>
                   </div>
                 </motion.div>

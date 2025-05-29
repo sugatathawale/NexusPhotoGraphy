@@ -14,25 +14,26 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     {/* Left side - Images */}
                     <div className="space-y-4">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
-                        >
-                            <Image
-                                src={work1}
-                                alt="Happy couple laughing"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </motion.div>
+            <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  className="relative h-[720px] w-[500px] mx-auto overflow-hidden rounded-t-[599px]"
+>
+    <Image
+        src={work1}
+        alt="Happy couple laughing"
+        fill
+        className="object-cover"
+        priority
+    />
+</motion.div>
+
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
+                    className="relative h-[520px] w-[500px]   mx-auto  overflow-hidden"
                         >
                             <Image
                                 src={work2}
@@ -50,7 +51,7 @@ export default function Contact() {
                         transition={{ duration: 0.6 }}
                         className="bg-white p-8 rounded-lg shadow-lg"
                     >
-                        <h1 className="text-4xl font-playfair mb-4 text-[#36302a]">Get us to shoot you!</h1>
+                        <h1 className="text-4xl font-playfair mb-2 text-[#36302a]">Get us to shoot you!</h1>
                         <p className="text-gray-600 mb-8">
                             Welcome to the first step in getting us on onboard. Fill this form and get one
                             step closer to making the best decision of your life! Not kidding.
@@ -125,18 +126,7 @@ export default function Contact() {
                                 </select>
                             </div>
 
-                            {/* Wedding Details */}
-                            <div className="space-y-2">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Tell us more about your wedding <span className="text-gray-500">(required)</span>
-                                </label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="All the dates, event flows, venues and any other specific details"
-                                    className="w-full px-4 py-2 rounded-md bg-[#F5F0EC] border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#36302a]"
-                                ></textarea>
-                            </div>
-
+                  
                             {/* Wedding Style */}
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-gray-700">

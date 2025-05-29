@@ -12,6 +12,7 @@ import Footer from "@/components/footer"
 import FAQSection from "@/components/faq-section"
 import ServiceCards from "@/components/service-cards"
 import WeddingStories from "@/components/wedding-stories"
+import CareersLanding from "@/components/careers-landing"
 
 export default function Home() {
   return (
@@ -19,14 +20,15 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <FilmsSection />
-      <StatsSection />
-      <PhotoGallery />
-      {/* <FeaturedWork /> */}
       <WeddingStories />
-      {/* <ServiceCards /> */}
+      <PhotoGallery />
+      <StatsSection />
+      <FilmsSection />
       <TestimonialsSlider />
       <FAQSection />
+      <CareersLanding />
+      {/* <FeaturedWork /> */}
+      {/* <ServiceCards /> */}
       {/* <Footer /> */}
     </main>
   )

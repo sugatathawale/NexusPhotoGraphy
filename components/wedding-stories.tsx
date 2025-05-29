@@ -1,123 +1,194 @@
-'use client';
+"use client"
 
-import Image from 'next/image';
+import { useEffect, useState, useCallback } from "react"
+import Image, { type StaticImageData } from "next/image"
 import work1 from '../src/work1.jpg'
 import work2 from '../src/work2.jpg'
 import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
-
 import work6 from '../src/work6.jpg'
-
+import work9 from '../src/work9.jpg'
 interface WeddingStory {
-    title: string;
-    description: string;
-    imageUrl: string;
-    location: string;
-    date: string;
+  title: string
+  description: string
+  imageUrl: StaticImageData | string
+  location: string
+  date: string
+  tagline?: string
 }
 
 const weddingStories: WeddingStory[] = [
+  {
+    title: "Sweet Together",
+    description: "A celebration of love filled with joy, laughter, and golden moments that will last forever.",
+    imageUrl:work6,
+    location: "Mumbai, India",
+    date: "March 2024",
+    tagline: "Sweet Together",
+  },
+  {
+    title: "Eclipsed Hearts",
+    description: "Where two souls unite under the stars, creating memories that will shine forever.",
+    imageUrl: work1,
+    location: "Dubai, UAE",
+    date: "February 2024",
+    tagline: "Eclipsed Hearts",
+  },
+  {
+    title: "Love & Sparkles",
+    description: "A magical celebration where every moment sparkled with pure love and joy.",
+    imageUrl: work2,
+    location: "Goa, India",
+    date: "January 2024",
+    tagline: "Love & Sparkles",
+  },
     {
-        title: "Saba & Usman's Magical Day",
-        description: "A wedding full of grace, tradition, and quiet elegance—their three-day celebration was the perfect blend of emotion, beauty, and connection.",
-        imageUrl: work1,
-        location: "Dubai, UAE",
-        date: "March 2024"
-    },
+    title: "Love & Sparkles",
+    description: "A magical celebration where every moment sparkled with pure love and joy.",
+    imageUrl: work2,
+    location: "Goa, India",
+    date: "January 2024",
+    tagline: "Love & Sparkles",
+  },
     {
-        title: "Dhruv & Pippa's Rustic Romance",
-        description: "In the serene setting of Oleander Farms, they celebrated their enchanting two-day wedding embracing nature and vintage elegance.",
-        imageUrl: work2,
-        location: "Karjat, India",
-        date: "February 2024"
-    },
-    {
-        title: "Aneesh & Maitri's Beachside Bliss",
-        description: "There's something magical about a wedding by the sea. The golden sunset created the perfect backdrop for their beautiful celebration.",
-        imageUrl: work3,
-        location: "Goa, India",
-        date: "January 2024"
-    }
-];
+    title: "Love & Sparkles",
+    description: "A magical celebration where every moment sparkled with pure love and joy.",
+    imageUrl: work9,
+    location: "Goa, India",
+    date: "January 2024",
+    tagline: "Love & Sparkles",
+  },
+  {
+    title: "Glowing in Forever",
+    description: "Their love story, written in the soft glow of forever, captured in timeless frames.",
+    imageUrl: work3,
+    location: "Delhi, India",
+    date: "December 2023",
+    tagline: "Glowing in Forever",
+  },
+  {
+    title: "Dusk Magic",
+    description: "As the sun set on their special day, magic filled the air with endless possibilities.",
+    imageUrl:work4,
+    location: "Udaipur, India",
+    date: "November 2023",
+    tagline: "Dusk Magic",
+  },
+]
 
 export default function WeddingStories() {
+  const [activeIndex, setActiveIndex] = useState(2)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  const nextSlide = useCallback(() => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setActiveIndex((prev) => (prev + 1) % weddingStories.length)
+    setTimeout(() => setIsTransitioning(false), 700)
+  }, [isTransitioning])
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000)
+    return () => clearInterval(timer)
+  }, [nextSlide])
+
+  const getCardStyle = (index: number) => {
+    const total = weddingStories.length
+    const distance = (index - activeIndex + total) % total
+    const relativePos = distance > total / 2 ? distance - total : distance
+
+    // Removed rotation - all cards are now straight (0deg)
+    const positions = {
+      [-2]: { x: "-32rem", y: "0", rotate: "0deg", scale: "0.85", zIndex: 1 },
+      [-1]: { x: "-16rem", y: "0", rotate: "0deg", scale: "0.9", zIndex: 2 },
+      [0]: { x: "0", y: "0", rotate: "0deg", scale: "1", zIndex: 5 },
+      [1]: { x: "16rem", y: "0", rotate: "0deg", scale: "0.9", zIndex: 2 },
+      [2]: { x: "32rem", y: "0", rotate: "0deg", scale: "0.85", zIndex: 1 },
+    } as const
+
     return (
-        <section className="py-20 bg-[#b9a58f] overflow-hidden">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl md:text-6xl font-serif mb-4 bg-gradient-to-r from-neutral-800 to-neutral-600 bg-clip-text text-transparent">
-                        One Story at a Time
-                    </h2>
-                    <p className="text-neutral-600 text-lg md:text-xl max-w-2xl mx-auto font-light italic">
-                        Discover the beautiful love stories we've had the privilege to capture
-                    </p>
-                </div>
+      positions[relativePos as keyof typeof positions] || {
+        x: "0",
+        y: "-100%",
+        rotate: "0deg",
+        scale: "0.8",
+        zIndex: 0,
+      }
+    )
+  }
 
-                <div className="relative mb-16">
-                    {/* Cards Container */}
-                    <div className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory no-scrollbar -mx-4 px-4">
-                        {weddingStories.map((story, index) => (
-                            <div
-                                key={index}
-                                className="min-w-[350px] md:min-w-[400px] bg-white rounded-2xl overflow-hidden shadow-xl snap-center transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col"
-                            >
-                                {/* Image Container */}
-                                <div className="relative h-[350px] w-full overflow-hidden">
-                                    <Image
-                                        src={story.imageUrl}
-                                        alt={story.title}
-                                        fill
-                                        className="object-cover transition-transform duration-700 hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-4 left-4 text-white">
-                                        <p className="text-sm font-medium tracking-wider uppercase">{story.location}</p>
-                                        <p className="text-sm opacity-80 font-light">{story.date}</p>
-                                    </div>
-                                </div>
+  return (
+    <section className="py-20 bg-white overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#E75480] font-light tracking-wide">
+            Nexus PhotoGraphy
+          </h2>
+        </div>
 
-                                {/* Content Container */}
-                                <div className="p-8 flex flex-col flex-grow">
-                                    <h3 className="text-2xl md:text-3xl font-serif mb-4 text-neutral-800 leading-tight">
-                                        {story.title}
-                                    </h3>
-                                    <p className="text-neutral-600 text-lg font-light leading-relaxed">
-                                        {story.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+        <div className="relative">
+          <div className="flex justify-center items-center min-h-[700px] relative perspective-[1200px]">
+            {weddingStories.map((story, index) => {
+              const position = getCardStyle(index)
+              return (
+                <div
+                  key={index}
+                  className={`absolute w-[320px] md:w-[450px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl
+                    transition-all duration-700 ease-out cursor-pointer
+                    hover:scale-[1.02] hover:shadow-3xl
+                    ${isTransitioning ? "" : "hover:z-10"}`}
+                  style={{
+                    transform: `translateX(${position.x}) translateY(${position.y}) rotate(${position.rotate}) scale(${position.scale})`,
+                    zIndex: position.zIndex,
+                    transformStyle: "preserve-3d",
+                    opacity:
+                      Math.abs(index - activeIndex) <= 2 ||
+                      Math.abs((index - activeIndex + weddingStories.length) % weddingStories.length) <= 2
+                        ? 1
+                        : 0,
+                  }}
+                >
+                  <div className="relative w-full h-full group">
+                    <Image
+                      src={story.imageUrl || "/placeholder.svg"}
+                      alt={story.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 320px, 450px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-between p-8 text-white">
+                      <div className="text-center">
+                        <h3 className="text-3xl md:text-4xl font-serif tracking-wider font-light">{story.tagline}</h3>
+                      </div>
+                      <button
+                        className="px-10 py-2.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 
+                        text-white text-sm tracking-wider hover:bg-white/30 transition-all duration-300 mt-auto
+                        group-hover:bg-white/30"
+                      >
+                        Click Here
+                      </button>
                     </div>
-
-                    {/* Navigation Arrows with Gradient Background */}
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-r from-[#FAF6F1] to-transparent pointer-events-none"></div>
-                    <button className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all z-10 border border-neutral-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                        </svg>
-                    </button>
-
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-l from-[#FAF6F1] to-transparent pointer-events-none"></div>
-                    <button className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all z-10 border border-neutral-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                    </button>
+                  </div>
                 </div>
+              )
+            })}
+          </div>
 
-                {/* Read More Button - Now below all cards */}
-                <div className="text-center">
-                    <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium tracking-wider uppercase overflow-hidden rounded-full border-2 border-neutral-800 hover:border-neutral-900 transition-all duration-300">
-                        <span className="absolute inset-0 bg-neutral-800 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                        <span className="relative group-hover:text-white transition-colors duration-300 flex items-center gap-3">
-                            Read More Stories
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </section>
-    );
-} 
+          {/* Navigation Dots */}
+          <div className="flex justify-center gap-2 mt-8">
+            {weddingStories.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 
+                  ${index === activeIndex ? "bg-[#E75480] w-3 h-3" : "bg-gray-300/50 hover:bg-[#E75480]/30"}`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
