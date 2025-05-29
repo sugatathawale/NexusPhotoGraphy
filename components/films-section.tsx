@@ -6,10 +6,11 @@ import { motion, useAnimation } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import work1 from '../public/images/work1.jpg'
 import work2 from '../public/images/work2.jpg'
-import work3 from '../src/work3.jpg'
+import work3 from '../public/images/work3.jpg'
 import work4 from '../public/images/work4.jpg'
 
 import work6 from '../public/images/work6.jpg'
+import { StaticImageData } from 'next/image'
 
 // CSS styles directly in the component
 const styles = {
@@ -41,7 +42,7 @@ const styles = {
 interface Film {
   id: string
   title: string
-  thumbnail: string
+  thumbnail: StaticImageData
   videoId: string
   category: string
   date: string
@@ -50,6 +51,7 @@ interface Film {
 const films: Film[] = [
   {
     id: "film-1",
+    title: "Riya & Aditya",
     thumbnail: work6,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
@@ -57,6 +59,7 @@ const films: Film[] = [
   },
   {
     id: "film-2",
+    title: "Sneha & Rahul",
     thumbnail: work4,
     videoId: "FSgpdIf_ebc",
     category: "Pre-Wedding",
@@ -64,6 +67,7 @@ const films: Film[] = [
   },
   {
     id: "film-3",
+    title: "Priya & Karan",
     thumbnail: work1,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
@@ -71,6 +75,7 @@ const films: Film[] = [
   },
   {
     id: "film-4",
+    title: "Neha & Vikas",
     thumbnail: work2,
     videoId: "FSgpdIf_ebc",
     category: "Engagement",
@@ -189,7 +194,7 @@ export default function FilmsSection() {
             className={`${styles.navButton} ${styles.leftButton}`}
             onClick={() => {
               controls.start({
-                x: (controls.get("x") as number) + 350,
+                x: "+=350",
                 transition: { duration: 0.5 },
               })
             }}
@@ -201,7 +206,7 @@ export default function FilmsSection() {
             className={`${styles.navButton} ${styles.rightButton}`}
             onClick={() => {
               controls.start({
-                x: (controls.get("x") as number) - 350,
+                x: "-=350",
                 transition: { duration: 0.5 },
               })
             }}
