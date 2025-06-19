@@ -6,9 +6,10 @@ import { motion, useAnimation } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import work1 from '../src/work1.jpg'
 import work2 from '../src/work2.jpg'
-import work4 from '../src/work3.jpg'
-
-import work6 from '../src/work6.jpg'
+import work4 from '../src/flimcard/img9.jpg'
+import work5 from '../src/flimcard/img1.jpg'
+import work7 from '../src/flimcard/img3.jpg'
+import work8 from '../src/potrait/pot3.jpg'
 import { StaticImageData } from 'next/image'
 
 // CSS styles directly in the component
@@ -51,7 +52,7 @@ const films: Film[] = [
   {
     id: "film-1",
     title: "Riya & Aditya",
-    thumbnail: work6,
+    thumbnail: work1,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
     date: "March 2024",
@@ -59,7 +60,7 @@ const films: Film[] = [
   {
     id: "film-2",
     title: "Sneha & Rahul",
-    thumbnail: work4,
+    thumbnail: work8,
     videoId: "FSgpdIf_ebc",
     category: "Pre-Wedding",
     date: "February 2024",
@@ -67,7 +68,7 @@ const films: Film[] = [
   {
     id: "film-3",
     title: "Priya & Karan",
-    thumbnail: work1,
+    thumbnail: work7,
     videoId: "FSgpdIf_ebc",
     category: "Wedding Film",
     date: "January 2024",
@@ -75,11 +76,28 @@ const films: Film[] = [
   {
     id: "film-4",
     title: "Neha & Vikas",
+    thumbnail: work4,
+    videoId: "FSgpdIf_ebc",
+    category: "Engagement",
+    date: "December 2023",
+  },
+   {
+    id: "film-5",
+    title: "Neha & Vikas",
     thumbnail: work2,
     videoId: "FSgpdIf_ebc",
     category: "Engagement",
     date: "December 2023",
   },
+     {
+    id: "film-6",
+    title: "Neha ",
+    thumbnail: work5,
+    videoId: "FSgpdIf_ebc",
+    category: "Engagement",
+    date: "December 2023",
+  },
+
 ]
 
 // Create an extended array for infinite scroll effect
@@ -178,7 +196,7 @@ export default function FilmsSection() {
                   <div className={styles.filmOverlay}>
                     <div className={styles.filmBrand}>A KnotsbyAMP Film</div>
                     <div className={styles.filmTitle}>
-                      <h3 className={styles.filmTitleText}>{film.title}</h3>
+                      {/* <h3 className={styles.filmTitleText}>{film.title}</h3> */}
                     </div>
                     <div className={styles.filmButton}>
                       <button className={styles.watchButton}>See More</button>

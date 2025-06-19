@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { FaPlay } from "react-icons/fa"
 import work1 from "../../src/work1.jpg"
 import work2 from"../../src/work2.jpg"
-import work3 from "../../src/work3.jpg"
+// import work3 from "../../src/work3.jpg"
 import work4 from "../../src/work4.jpg"
 import work6 from "../../public/images/work6.jpg"
 import work9 from "../../public/images/work9.jpg"
@@ -27,7 +27,7 @@ export default function WeddingFilms() {
     },
     {
       id: 3,
-      thumbnail: work3,
+      thumbnail: work1,
       videoId: "FSgpdIf_ebc",
     },
     {
@@ -61,7 +61,7 @@ export default function WeddingFilms() {
     },
     {
       id: 3,
-      thumbnail: work3,
+      thumbnail: work1,
       videoId: "FSgpdIf_ebc",
     },
     {

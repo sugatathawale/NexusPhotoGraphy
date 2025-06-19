@@ -3,12 +3,31 @@
 import { useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import work1 from "../src/work1.jpg"
-import work2 from   "../src/work2.jpg"
-import work3 from  "../src/work3.jpg"
-import work4 from  "../src/work4.jpg"
-import work6 from    "../src/work6.jpg"
-import work9 from   "../src/work9.jpg"
+import land1 from "../src/landscape/land1.jpg"
+import land2 from  "../src/landscape/lND2.jpg"
+import land3 from  "../src/landscape/land3.jpg"
+import land4 from  "../src/landscape/land4.jpg"
+import land5 from  "../src/landscape/land5.jpg"
+import land6 from  "../src/landscape/land6.jpg"
+import land7 from  "../src/landscape/land7.jpg"
+import land8 from  "../src/landscape/land8.jpg"
+import land9 from  "../src/landscape/land9.jpg"
+import pot1 from  "../src/potrait/pot.jpg"
+import pot2 from   "../src/potrait/pot2.jpg"
+import pot3 from    "../src/potrait/pot3.jpg"
+import pot4 from   "../src/potrait/pot4.jpg"
+import pot5 from   "../src/potrait/pot5.jpg"
+
+import sqr1 from  "../src/flimcard/img1.jpg"
+import sqr2 from  "../src/flimcard/img2.jpg"
+import sqr3 from   "../src/flimcard/img3.jpg"
+import sqr4 from   "../src/flimcard/img9.jpg"
+import sqr5 from   "../src/flimcard/img5.jpg"
+import sqr6 from   "../src/square/sqr1.jpg"
+import sqr7 from    "../src/square/sqr2.jpg"
+import sqr8 from   "../src/square/sqr3.jpg"
+
+
 import type { StaticImageData } from 'next/image'
 
 // Define photo types
@@ -26,94 +45,159 @@ interface Photo {
 const photos: Photo[] = [
   {
     id: "photo-1",
-    src: work9,
+    src: land1,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding ceremony with flower decorations",
   },
   {
     id: "photo-2",
-    src: work1,
+    src: pot2,
     layout: "portrait",
     category: "Pre-Wedding",
     alt: "Couple laughing together in pre-wedding shoot",
   },
   {
     id: "photo-3",
-    src: work2,
+    src: pot1,
     layout: "square",
     category: "Engagement",
     alt: "Engagement celebration with family",
   },
   {
     id: "photo-4",
-    src: work3,
+    src: land2,
     layout: "landscape",
     category: "Wedding",
     alt: "Beach wedding ceremony",
   },
   {
     id: "photo-5",
-    src: work9,
+    src: pot3,
     layout: "portrait",
     category: "Pre-Wedding",
     alt: "Couple at beach pre-wedding shoot",
   },
   {
     id: "photo-6",
-    src: work6,
+    src: sqr1,
     layout: "square",
     category: "Engagement",
     alt: "Traditional engagement ceremony",
   },
   {
     id: "photo-7",
-    src: work9,
+    src: land3,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding celebration with guests",
   },
   {
     id: "photo-8",
-    src: work3,
+    src: pot1,
     layout: "portrait",
     category: "Pre-Wedding",
     alt: "Urban pre-wedding photoshoot",
   },
   {
     id: "photo-9",
-    src: work1,
+    src: land4,
     layout: "landscape",
     category: "Wedding",
     alt: "Traditional wedding ceremony",
   },
   {
     id: "photo-10",
-    src: work4,
+    src: pot4,
     layout: "portrait",
     category: "Engagement",
     alt: "Couple during engagement photoshoot",
   },
   {
     id: "photo-11",
-    src: work6,
+    src: land5,
     layout: "landscape",
     category: "Pre-Wedding",
     alt: "Couple in traditional attire",
   },
   {
     id: "photo-12",
-    src: work1,
+    src: land6,
     layout: "landscape",
     category: "Wedding",
     alt: "Wedding venue decoration",
   },
   {
     id: "photo-13",
-    src: work1,
+    src: sqr2,
     layout: "square",
     category: "Wedding",
     alt: "Wedding venue decoration",
+  },
+  
+    {
+    id: "photo-14",
+    src: pot5,
+    layout: "portrait",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
+  },
+    {
+    id: "photo-15",
+    src: land7,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
+  },
+    {
+    id: "photo-16",
+    src: sqr5,
+    layout: "square",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
+  },
+      {
+    id: "photo-17",
+    src: sqr6,
+    layout: "square",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
+  },
+        {
+    id: "photo-18",
+    src: sqr7,
+    layout: "square",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
+  },
+    {
+    id: "photo-19",
+    src: land8,
+    layout: "landscape",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
+  },
+
+        {
+    id: "photo-20",
+    src: land9,
+    layout: "landscape",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
+  },
+      {
+    id: "photo-21",
+    src: sqr4,
+    layout: "square",
+    category: "Wedding",
+    alt: "Wedding venue decoration",
+  },
+          {
+    id: "photo-22",
+    src: pot5,
+    layout: "square",
+    category: "Engagement",
+    alt: "Couple during engagement photoshoot",
   },
 ]
 

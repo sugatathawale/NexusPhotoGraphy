@@ -7,19 +7,19 @@ const stats = [
   {
     id: 1,
     icon: <Camera className="w-8 h-8 text-golden-500" />,
-    value: "600+",
+    value: "100+",
     label: "Weddings Captured",
   },
   {
     id: 2,
     icon: <Map className="w-8 h-8 text-golden-500" />,
-    value: "15+",
+    value: "10+",
     label: "Countries Visited",
   },
   {
     id: 3,
     icon: <Award className="w-8 h-8 text-golden-500" />,
-    value: "12",
+    value: "10",
     label: "Industry Awards",
   },
   {
