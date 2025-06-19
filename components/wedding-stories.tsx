@@ -2,12 +2,14 @@
 
 import { useEffect, useState, useCallback } from "react"
 import Image, { type StaticImageData } from "next/image"
-import work1 from  "../src/work1.jpg"
-import work2 from    "../src/work2.jpg"
-import work3 from  "../src/work3.jpg"
-import work4 from  "../src/work4.jpg"
-import work6 from  "../src/work6.jpg"
-import work9 from  "../src/work9.jpg"
+import work1 from  "../src/flimcard/img1.jpg"
+import work2 from  "../src/flimcard/img2.jpg"
+import work3 from  "../src/flimcard/img3.jpg"
+import work4 from  "../src/flimcard/img4.webp"
+import work5 from   "../src/flimcard/img5.jpg"
+import work6 from  "../src/flimcard/img6.jpg"
+import work7 from  "../src/flimcard/img7.jpg"
+import work8 from  "../src/flimcard/img8.jpg"
 interface WeddingStory {
   title: string
   description: string
@@ -21,7 +23,7 @@ const weddingStories: WeddingStory[] = [
   {
     title: "Sweet Together",
     description: "A celebration of love filled with joy, laughter, and golden moments that will last forever.",
-    imageUrl:work6,
+    imageUrl:work1,
     location: "Mumbai, India",
     date: "March 2024",
     tagline: "Sweet Together",
@@ -29,7 +31,7 @@ const weddingStories: WeddingStory[] = [
   {
     title: "Eclipsed Hearts",
     description: "Where two souls unite under the stars, creating memories that will shine forever.",
-    imageUrl: work1,
+    imageUrl: work2,
     location: "Dubai, UAE",
     date: "February 2024",
     tagline: "Eclipsed Hearts",
@@ -37,7 +39,15 @@ const weddingStories: WeddingStory[] = [
   {
     title: "Love & Sparkles",
     description: "A magical celebration where every moment sparkled with pure love and joy.",
-    imageUrl: work2,
+    imageUrl: work3,
+    location: "Goa, India",
+    date: "January 2024",
+    tagline: "Love & Sparkles",
+  },
+    {
+    title: "Love",
+    description: "A magical celebration where every moment sparkled with pure love and joy.",
+    imageUrl: work4,
     location: "Goa, India",
     date: "January 2024",
     tagline: "Love & Sparkles",
@@ -45,15 +55,7 @@ const weddingStories: WeddingStory[] = [
     {
     title: "Love & Sparkles",
     description: "A magical celebration where every moment sparkled with pure love and joy.",
-    imageUrl: work2,
-    location: "Goa, India",
-    date: "January 2024",
-    tagline: "Love & Sparkles",
-  },
-    {
-    title: "Love & Sparkles",
-    description: "A magical celebration where every moment sparkled with pure love and joy.",
-    imageUrl: work9,
+    imageUrl: work5,
     location: "Goa, India",
     date: "January 2024",
     tagline: "Love & Sparkles",
@@ -61,7 +63,7 @@ const weddingStories: WeddingStory[] = [
   {
     title: "Glowing in Forever",
     description: "Their love story, written in the soft glow of forever, captured in timeless frames.",
-    imageUrl: work3,
+    imageUrl: work6,
     location: "Delhi, India",
     date: "December 2023",
     tagline: "Glowing in Forever",
@@ -69,7 +71,15 @@ const weddingStories: WeddingStory[] = [
   {
     title: "Dusk Magic",
     description: "As the sun set on their special day, magic filled the air with endless possibilities.",
-    imageUrl:work4,
+    imageUrl:work7,
+    location: "Udaipur, India",
+    date: "November 2023",
+    tagline: "Dusk Magic",
+  },
+    {
+    title: " Magic",
+    description: "As the sun set on their special day, magic filled the air with endless possibilities.",
+    imageUrl:work8,
     location: "Udaipur, India",
     date: "November 2023",
     tagline: "Dusk Magic",
