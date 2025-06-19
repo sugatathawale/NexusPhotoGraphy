@@ -37,8 +37,8 @@ export default function Testimonials() {
             image: "/images/testimonials/couple1.jpg",
             location: "Mumbai",
             rating: 5,
-            review: "Working with KnotsbyAMP was the best decision we made for our wedding. Their attention to detail and ability to capture emotions is unmatched. Every photo tells a story!",
-            date: "December 2023"
+            review: "Working with Nexus was the best decision we made for our wedding. Their attention to detail and ability to capture emotions is unmatched. Every photo tells a story!",
+            date: "December 2025"
         },
         {
             id: 2,
@@ -56,7 +56,7 @@ export default function Testimonials() {
             location: "Udaipur",
             rating: 5,
             review: "Not just photographers, but storytellers! They captured the essence of our relationship and wedding beautifully. We couldn't be happier with the results.",
-            date: "October 2023"
+            date: "October 2020"
         }
     ];
 
@@ -194,14 +194,14 @@ export default function Testimonials() {
                                 className="bg-white p-6 rounded-lg shadow-lg"
                             >
                                 <div className="flex items-center mb-4">
-                                    <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                                    {/* <div className="relative w-16 h-16 rounded-full overflow-hidden">
                                         <Image
                                             src={review.image}
                                             alt={review.couple}
                                             fill
                                             className="object-cover"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="ml-4">
                                         <h3 className="font-playfair text-xl">{review.couple}</h3>
                                         <p className="text-gray-600">{review.location}</p>
@@ -227,9 +227,16 @@ export default function Testimonials() {
                     <p className="text-xl text-gray-700 mb-8">
                         Let's capture your special moments together
                     </p>
-                    <button className="bg-[#36302a] text-white px-8 py-3 rounded-full text-lg hover:bg-[#4a423a] transition-colors">
-                        Get in Touch
-                    </button>
+              <a
+  href="https://api.whatsapp.com/send?phone=917083456134"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-[#36302a] text-white px-8 py-3 rounded-full text-lg hover:bg-[#4a423a] transition-colors">
+    Get in Touch
+  </button>
+</a>
+
                 </div>
             </section>
 

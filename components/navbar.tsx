@@ -71,7 +71,7 @@ function NavLinks({ mobile = false, onClick = () => {} }) {
   const links = [
     { name: "Home", href: "/" },
     { name: "Wedding Films", href: "/wedding-films" },
-    { name: "Wedding Stories", href: "/wedding-stories" },
+    // { name: "Wedding Stories", href: "/wedding-stories" },
     { name: "Couple Shoot", href: "/couple-shoot" },
     { name: "About", href: "/about" },
     { name: "Testimonials", href: "/testimonials" },

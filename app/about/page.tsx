@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import work1 from "../../src/work1.jpg"
+import work1 from "../../src/flimcard/img9.jpg"
 import work2 from "../../src/work2.jpg"
-import work3 from "../../public/images/work3.jpg"
+// import work3 from "../../public/images/work3.jpg"
 import work4 from "../../src/work4.jpg"
 import niraj from "../../src/niraj.jpg"
 import work9 from "../../src/work9.jpg"

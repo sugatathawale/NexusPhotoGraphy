@@ -14,18 +14,30 @@ export default function Footer() {
               unique story.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-golden-400 transition-colors">
-                <Instagram className="w-5 h-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
+ <Link
+  href="https://www.instagram.com/weddings.studionexus"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-golden-400 transition-colors flex items-center space-x-1"
+>
+  <Instagram className="w-5 h-5" />
+  <span className="sr-only">Instagram</span>
+</Link>
+
               <Link href="#" className="text-gray-400 hover:text-golden-400 transition-colors">
                 <Facebook className="w-5 h-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-golden-400 transition-colors">
-                <Youtube className="w-5 h-5" />
-                <span className="sr-only">Youtube</span>
-              </Link>
+        <Link
+  href="https://www.youtube.com/@studionexusphotography"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-golden-400 transition-colors"
+>
+  <Youtube className="w-5 h-5" />
+  <span className="sr-only">YouTube</span>
+</Link>
+
               <Link href="#" className="text-gray-400 hover:text-golden-400 transition-colors">
                 <Twitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>

@@ -27,9 +27,16 @@ export default function AboutSection() {
           </p>
 
           <div className="mt-10">
-            <button className="bg-gray-800 hover:bg-gray-700 text-white rounded-full px-8 py-4 transition-colors">
-              Get in touch
-            </button>
+<a
+  href="https://api.whatsapp.com/send?phone=917083456134&text=Hi%2C%20I%20would%20like%20to%20get%20in%20touch!"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-gray-800 hover:bg-gray-700 text-white rounded-full px-8 py-4 transition-colors">
+    Get in touch
+  </button>
+</a>
+
           </div>
         </div>
       </div>

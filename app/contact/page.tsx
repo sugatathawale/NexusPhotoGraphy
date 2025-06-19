@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import work1 from "../../src/work1.jpg"
-import work2 from "../../src/work2.jpg"
+import work2 from "../../src/work1.jpg"
+import work1 from "../../src/flimcard/img9.jpg"
 
 
 export default function Contact() {

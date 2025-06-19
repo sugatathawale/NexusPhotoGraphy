@@ -4,10 +4,15 @@ import { useState, useRef } from "react"
 import { FaPlay } from "react-icons/fa"
 import work1 from "../../src/work1.jpg"
 import work2 from"../../src/work2.jpg"
+import flim3 from "../../src/flimcard/img3.jpg"
+import flim4 from "../../src/flimcard/img5.jpg"
+import flim5 from "../../src/flimcard/img9.jpg"
 // import work3 from "../../src/work3.jpg"
-import work4 from "../../src/work4.jpg"
-import work6 from "../../public/images/work6.jpg"
-import work9 from "../../public/images/work9.jpg"
+import sqr1 from "../../src/square/sqr1.jpg"
+import sqr2 from "../../src/square/sqr2.jpg"
+import sqr3 from "../../src/square/sqr4.jpg"
+import sqr4 from "../../src/potrait/pot.jpg"
+import sqr5 from "../../src/potrait/pot4.jpg"
 
 
 export default function WeddingFilms() {
@@ -17,32 +22,32 @@ export default function WeddingFilms() {
   const popularFilms = [
     {
       id: 1,
-      thumbnail: work1,
+      thumbnail: sqr1,
       videoId: "G_abstAmkqQ",
     },
     {
       id: 2,
-      thumbnail: work2,
+      thumbnail: sqr2,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 3,
-      thumbnail: work1,
+      thumbnail: sqr3,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 4,
-      thumbnail: work4,
+      thumbnail: sqr4,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 5,
-      thumbnail: work2,
+      thumbnail: flim5,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 6,
-      thumbnail: work1,
+      thumbnail: sqr5,
       videoId: "FSgpdIf_ebc",
     },
   ]
@@ -50,30 +55,30 @@ export default function WeddingFilms() {
   const recentFilms = [
     {
       id: 1,
-      thumbnail: work1,
+      thumbnail: flim4,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 2,
 
-      thumbnail: work2,
+      thumbnail: work1,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 3,
-      thumbnail: work1,
+      thumbnail: work2,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 4,
 
-      thumbnail: work4,
+      thumbnail:flim3 ,
       videoId: "FSgpdIf_ebc",
     },
     {
       id: 5,
       title: "Doctors in Love",
-      thumbnail: work2,
+      thumbnail: flim5,
       videoId: "FSgpdIf_ebc",
     },
   ]

@@ -5,8 +5,14 @@ import type React from "react"
 import { motion } from "framer-motion"
 import work1 from  "../../src/work1.jpg"
 import work2 from  "../../src/work2.jpg"
-import work3 from "../../src/work3.jpg"
-import work4 from "../../src/work4.jpg"
+// import work3 from "../../src/work3.jpg"
+import couple4 from "../../src/work9.jpg"
+import couple5 from "../../src/work4.jpg"
+import couple6 from "../../src/potrait/pot3.jpg"
+import couple7 from "../../src/potrait/pot5.jpg"
+import couple8 from "../../src/flimcard/img2.jpg"
+import couple9 from "../../src/flimcard/img5.jpg"
+import couple10 from "../../src/flimcard/img3.jpg"
 import work6 from "../../public/images/work6.jpg"
 import work9 from "../../public/images/work9.jpg"
 
@@ -23,7 +29,7 @@ export default function CoupleShoot() {
         },
         {
             id: 2,
-            src: work1,
+            src: couple4,
             title: "Urban Romance",
             location: "South Mumbai",
         },
@@ -35,37 +41,37 @@ export default function CoupleShoot() {
         },
         {
             id: 4,
-            src: work4,
+            src: couple5,
             title: "Monsoon Magic",
             location: "Marine Drive",
         },
         {
             id: 5,
-            src: work1,
+            src: couple6,
             title: "Architectural Romance",
             location: "Gateway of India",
         },
         {
             id: 6,
-            src: "/images/couple-6.jpg",
+            src: couple7,
             title: "Sunset Stories",
             location: "Bandstand",
         },
         {
             id: 7,
-            src: work3,
+            src: couple8,
             title: "Royal Palace Affair",
             location: "Udaipur Palace",
         },
         {
             id: 8,
-            src: work2,
+            src: couple9,
             title: "Moonlight Serenade",
             location: "Worli Sea Face",
         },
         {
             id: 9,
-            src: work3,
+            src: couple10,
             title: "Twilight Embrace",
             location: "Bandra Worli Sea Link",
         },
@@ -87,13 +93,13 @@ export default function CoupleShoot() {
         },
         {
             id: 3,
-            src: work3,
+            src: work1,
             title: "Artistic Vision",
             description: "Creative compositions with unique perspectives and lighting",
         },
         {
             id: 4,
-            src: work4,
+            src: work1,
             title: "Vintage Romance",
             description: "Nostalgic aesthetics with warm tones and dreamy atmospheres",
         },
@@ -283,9 +289,16 @@ export default function CoupleShoot() {
                     <p className="text-lg mb-8">
                         Let's capture the magic of your relationship in stunning photographs that you'll cherish forever.
                     </p>
-                    <button className="bg-[#D3C4B5] text-[#36302a] px-8 py-3 rounded-full font-medium hover:bg-[#E5D6C7] transition-colors">
-                        Book Your Session
-                    </button>
+      <a
+  href="https://api.whatsapp.com/send?phone=917083456134&text=Hi%2C%20I'm%20interested%20in%20booking%20a%20session!"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-[#D3C4B5] text-[#36302a] px-8 py-3 rounded-full font-medium hover:bg-[#E5D6C7] transition-colors">
+    Book Your Session
+  </button>
+</a>
+
                 </div>
             </section>
         </div>

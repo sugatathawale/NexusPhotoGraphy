@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import work1 from  "../src/work1.jpg"
 import work2 from '../src/work2.jpg'
-import work3 from '../src/work3.jpg'
+// import work3 from '../src/work3.jpg'
 import work4 from '../src/work4.jpg'
 
 
@@ -36,7 +36,7 @@ const featuredProjects: Project[] = [
     id: 'project-3',
     title: 'Maya & Arjun',
     description: 'Engagement ceremony in Goa',
-    image: work3,
+    image: 1,
     category: 'Engagement'
   },
   {
